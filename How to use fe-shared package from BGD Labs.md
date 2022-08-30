@@ -91,8 +91,7 @@ _Contracts folder is already located in example package, no need to do anything_
 ---- 
 ## Front-end
 Now when the contract is up and running it’s time to spin up the front-end, but first let’s see how the result would look like
-_insert video here_
-
+![Contract deployed output](https://raw.githubusercontent.com/bgd-labs/blog/main/images/app_demo.webp)
 Although the app logic is basic, it still should go through mandatory flow
 1. Connect wallet
 2. Switch network (Goereli test net in example)
