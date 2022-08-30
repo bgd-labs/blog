@@ -20,8 +20,6 @@ To understand why exactly, there is always an RPC and wallet. Let’s go through
 This way we’ll have an idea of the entire process and can easily tweak smart contract to experiment.
 
 ## Smart contract
-
-## The contract
 The whole contract is a bit modified example of [SimpleStorage example](https://docs.soliditylang.org/en/develop/introduction-to-smart-contracts.html#storage-example)
 Source code looks like this 
 ```Solidity
