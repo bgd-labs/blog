@@ -91,6 +91,7 @@ _Contracts folder is already located in example package, no need to do anything_
 ---- 
 ## Front-end
 Now when the contract is up and running it’s time to spin up the front-end, but first let’s see how the result would look like
+
 ![Contract deployed output](https://raw.githubusercontent.com/bgd-labs/blog/main/images/app_demo.webp)
 Although the app logic is basic, it still should go through mandatory flow
 1. Connect wallet
@@ -113,19 +114,17 @@ import { Counter } from "../contracts/Counter";
 import { Counter__factory } from "../contracts/factories/Counter__factory";
 
 export class CounterDataService {
-  private rpcProvider: providers.JsonRpcBatchProvider;
   private counterFactory: Counter;
-  private signer?: providers.JsonRpcSigner;
+  private counterConnectedFactory?: Counter;
   constructor(provider: providers.JsonRpcBatchProvider) {
-    this.rpcProvider = provider;
     this.counterFactory = Counter__factory.connect(
       COUNTER_ADDRESS,
-      this.rpcProvider
+      provider
     );
   }
 
   public connectSigner(signer: providers.JsonRpcSigner) {
-    this.signer = signer;
+    this.counterConnectedFactory = this.counterFactory.connect(signer);
   }
 
   async fetchCurrentNumber() {
@@ -133,18 +132,16 @@ export class CounterDataService {
   }
 
   async increment() {
-    if (this.signer) {
-      const connectedSigner = this.counterFactory.connect(this.signer);
-      return connectedSigner.increment()
+    if (this.counterConnectedFactory) {
+      return this.counterConnectedFactory.increment()
     } else {
       throw new Error('CONNECT YOUR SIGNERSSSSS')
     }
   }
 
   async decrement() {
-    if (this.signer) {
-      const connectedSigner = this.counterFactory.connect(this.signer);
-      return connectedSigner.decrement();
+    if (this.counterConnectedFactory) {
+      return this.counterConnectedFactory.decrement();
     } else {
       throw new Error('CONNECT YOUR SIGNERSSSSS')
     }
