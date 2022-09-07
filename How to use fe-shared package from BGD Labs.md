@@ -50,7 +50,7 @@ If you want to see how front-end is built, skip to front-end part right away, ot
 1. Install [foundy](https://getfoundry.sh)
 2. In terminal run command `anvil`, the output should look something like this  
 	![Anvil output](https://raw.githubusercontent.com/bgd-labs/blog/main/images/anvil_output.png)
-3. Go to fe-shared-example/contracts folder and create .env file (there is .env.example file for reference)
+3. Go to `fe-shared-example/contracts` folder and create `.env` file (there is .env.example file for reference)
 4. Add one of the private keys from anvil output like so (address can differ) to the end of .env file
 ```bash
 PK=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
@@ -60,7 +60,7 @@ PK=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 ANVIL_RPC=http://127.0.0.1:8545
 ```
 6. Call `source .env` to load environment variables
-7. Install dependencies `cd contracts && forge install`
+7. Inside contracts folder call `forge install`
 8. Deploy `Counter` contract to anvil go to contracts folder and execute
 ```bash
 forge script script/Counter.s.sol:CounterScript --fork-url $ANVIL_RPC --private-key $PK --broadcast
