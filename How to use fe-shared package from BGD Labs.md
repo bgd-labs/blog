@@ -59,16 +59,15 @@ PK=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 ```bash
 ANVIL_RPC=http://127.0.0.1:8545
 ```
-6. Call `source .env` to load environment variables
-7. Inside contracts folder call `forge install`
-8. Deploy `Counter` contract to anvil go to contracts folder and execute
+6. Inside contracts folder call `forge install`
+7. Deploy `Counter` contract to anvil go to contracts folder and execute
 ```bash
 forge script script/Counter.s.sol:CounterScript --fork-url $ANVIL_RPC --private-key $PK --broadcast
 ```
 
 Once the contract is deployed, you should have contract address like so
 ![Contract deployed output](https://raw.githubusercontent.com/bgd-labs/blog/main/images/anvil_deploy.png)
-Let’s test if it’s working fine, add one more variable to .env file and call `source .env`
+Let’s test if it’s working fine, add one more variable to .env file
 ```bash
  CONTRACT_ADDRESS=0x5fbdb2315678afecb367f032d93f642f64180aa3
 ```
