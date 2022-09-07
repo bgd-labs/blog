@@ -50,25 +50,27 @@ If you want to see how front-end is built, skip to front-end part right away, ot
 1. Install [foundy](https://getfoundry.sh)
 2. In terminal run command `anvil`, the output should look something like this  
 	![Anvil output](https://raw.githubusercontent.com/bgd-labs/blog/main/images/anvil_output.png)
-3. Add one of the private keys from anvil output like so (address can differ)
+3. Go to fe-shared-example/contracts folder and create .env file (there is .env.example file for reference)
+4. Add one of the private keys from anvil output like so (address can differ) to the end of .env file
 ```bash
-export PK=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+PK=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 ```
-4. Add anvil url to .env variables (don’t forget http:// before anvil url)
+5. Add anvil url to the end of .env file (don’t forget http:// before anvil url)
 ```bash
-export ANVIL_RPC=http://127.0.0.1:8545
+ANVIL_RPC=http://127.0.0.1:8545
 ```
-5. Install dependencies `cd contracts && forge install`
-6. Deploy `Counter` contract to anvil go to contracts folder and execute
+6. Call `source .env` to load environment variables
+7. Install dependencies `cd contracts && forge install`
+8. Deploy `Counter` contract to anvil go to contracts folder and execute
 ```bash
 forge script script/Counter.s.sol:CounterScript --fork-url $ANVIL_RPC --private-key $PK --broadcast
 ```
 
 Once the contract is deployed, you should have contract address like so
 ![Contract deployed output](https://raw.githubusercontent.com/bgd-labs/blog/main/images/anvil_deploy.png)
-Let’s test if it’s working fine, in the same terminal session do
+Let’s test if it’s working fine, add one more variable to .env file and call `source .env`
 ```bash
-export CONTRACT_ADDRESS=0x5fbdb2315678afecb367f032d93f642f64180aa3
+ CONTRACT_ADDRESS=0x5fbdb2315678afecb367f032d93f642f64180aa3
 ```
 Let’s verify if contract is working as expected
 1. Increment
